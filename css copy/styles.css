@@ -1,0 +1,1120 @@
+/*css geral*/
+html{
+    font-family: "Open Sans",sans-serif;
+}
+body{
+    margin: 0;
+}
+h1,h2,h3,h4,h5,p,span{
+    margin: 0;
+    color: #666;
+}
+.container{
+    max-width: 1920px;/*tamanho máximo da tela*/
+    width: 100%;/*se não for maior que 1920px,vai exibir 100%*/
+}
+
+/*header*/
+header{
+    position: relative;/*relativo ao container*/
+    top: 0;
+    height: auto;
+    width: 100%;/*largura máx da tela do dispositivo*/
+}
+
+/*navbar -> FIXA*/
+nav{
+    background: url('/ProjetoSite3/background-5431959_1280.jpg') no-repeat;
+    position: fixed;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    z-index: 1;/*para visualizar de onde estiver.*/
+    background-color: #ffc8dd;
+    border-bottom: 1px solid #ccc;
+    transition: transform 0.3s ease-in-out;
+    background-size: cover;
+}
+nav:after{
+    clear: both;
+    content: "";
+    display: block;
+}
+.nav-container{
+    max-width: 1200px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+#logo{
+    width: 125px;
+    height: 80px;
+    margin-top: 15px;
+}
+.nav-container ul{
+    float: right; /*vai posicionar a lista à direita da tela*/
+    height: 100px;
+    line-height: 100px;
+    margin: 0;
+}
+.nav-container li{
+    list-style: none;
+    float: left;
+    margin: 0 15px; /*vai dar espaçamento de 15px*/
+}
+.nav-container li a{
+    text-decoration: none;
+    color: #000;
+    transition: 0.5s;
+    font-weight: 800;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace ;
+}
+.nav-container li a:hover{
+    color: #ffafcc;
+}
+.nav-hidden {
+    transform: translateY(-100%);
+}
+/*banner*/
+#main-banner{
+    background:url('/ProjetoSite3/background-5431959_1280.jpg') no-repeat;
+    background-size: cover;
+    background-position: 0 55%;
+    position:relative;/*ficará relativo a Nav*/
+    margin-top: 40px; /*SALVAR E VER COMO ESTÁ FICANDO!*/
+    height: 450px;
+    padding-top: 8.5em;
+}
+#search-form{
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8em;/*espaçamento interno relativo ao main-banner*/
+    padding-bottom: 15em;
+    text-align: center;
+}
+#search-form h1{
+    font-size: 40px;
+    color: #000;
+}
+#search-form p{
+    margin-top: 30px;/*distância do H1*/
+    margin-bottom: 60px;/*distância dos campos de textbox´s*/
+    font-size: 18px;
+    font-weight: 300;/*espessura da letra*/
+    color: #000;
+}
+#search-form input,#search-form select{
+    background-color: #FFF;
+    border-radius: 5px;
+    border-color: transparent;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 0 10px;
+}
+#search-form input{
+    text-align: center;
+}
+#search-form input[type=submit], #contatojobs input[type=submit]{
+    background-color: #ffc8dd;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    transition: 0.5s;
+    
+}
+#search-form input[type=submit]:hover,#contatojobs input[type=submit]:hover{
+    color: #ffc8dd;
+    background-color: transparent;
+    border:2px solid #ffc8dd;
+    
+}
+/*2 - Seção últimas vagas*/
+#lastjobs-container{
+    text-align: center; /*Centralizar os elementos desse container*/
+    padding: 100px 0;/* cin espaçamento interno lateral 100px*/
+}
+.wrapper{
+    max-width: 1200px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+#lastjobs-container h1{
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+#lastjobs-container ul{
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+#lastjobs-container ul li{
+    list-style: none;
+    text-align: left;
+    border-bottom: solid 1px #ccc;
+    height: 80px;
+    position: relative;
+}
+#lastjobs-container ul li:last-child{  /*Vai retirar a linha dupla inferior da lista*/
+    border: none;
+}
+.clickarea{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.company-box{
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    padding-left: 1%;
+}
+.company-box img{
+    width: 100px;
+    margin-top: 2.5px;
+}
+#imgamazon{
+    margin-top: 30px;
+    margin-left: 4px;
+}
+.company-info{
+    display: inline;
+    margin-left: 50px;
+    margin-top: 10px;
+    text-align: left;
+    position: absolute;
+}
+.company-info h3{
+    font-weight: 300;/*espessura da letra*/
+    margin-bottom: 10px;
+}
+.company-info p{
+    font-weight: bold;
+}
+/*Company locality*/
+.locality{
+    color: #6D6D6D;
+    display: inline-block;
+    width: 25%;
+    position: absolute;
+    height: 100%;
+    line-height: 80px;
+}
+.locality i, .locality p{
+    display: inline-block;
+}
+.locality i{
+    margin-right: 5px;
+}
+/* Company job type*/
+.job-type{
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    padding-top: 30px;
+    right: 1%;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.job-type span{
+    display: block;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 5px;
+    color: #FFF;
+}
+.clt{
+    background-color: #735fee;
+}
+.pj{
+    background-color: #5bbc2e;
+}
+.homeoffice{
+    background-color: #ff5a5f;
+}
+/*Botão veja mais*/
+.btnjobs-container{
+    margin-top: 50px;
+}
+.btn-jobs{
+    text-transform: uppercase;
+    background-color: #FFF;
+    color: #3381F3;
+    border: 2px solid #3381F3;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.btn-jobs:hover{
+    background-color:#3381F3;
+    color: #FFF;
+}
+/* Vagas enviadas*/
+#sendjobs-container{
+    background: url(/img/banner2.jpg) no-repeat;
+    background-size: cover;
+    background-position: 0 25%;
+    padding: 15em 0;
+}
+#sendjobs-container h2,#sendjobs-container p{
+    width: 600px;
+    color: #FFF;
+}
+#sendjobs-container h2{
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+#sendjobs-container p{
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+.light-btn{
+    background-color: #FFF;
+    border: 2px solid #FFF;
+    color:#666;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.light-btn:hover{
+    background-color: transparent;
+    color:  #FFF;
+}
+#status-container {
+    text-align: center;
+    padding: 5em 0;
+}
+.title-center {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.p-center{
+    width: 80%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+}
+.status-box {
+    display: inline-block;
+    text-align: center;
+    width: 24.5%;
+    margin-top: 80px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    height: 100px;
+}
+.status-box:nth-child(2) {
+    border: none;
+}
+.status-box:nth-child(3) {
+    border-right: none;
+}
+.status-qtd {
+    font-size: 36px;
+}
+.status-text {
+    font-size: 20px;
+}
+/*4- Depoimentos*/
+#testmony-container {
+    background: url('/ProjetoSite3/pink-flowers-with-leaves-grey-table.jpg') no-repeat;
+    background-size: cover;
+    padding: 10em 0;
+}
+#testmony-container h2,
+#testmony-container p {
+    color: #000;
+    text-align: center;
+}
+#testmony-container h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+#testmony-container p {
+    margin-bottom: 50px;
+}
+.testmony-box {
+    display: inline-block;
+    width: 24.5%;
+    text-align: center;  
+}
+#testmony-container .testmony-box .testmony-msg {
+    background-color: #FFF;
+    color: #666;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    position: relative;
+    margin: 35px auto;
+    font-style: italic;
+}
+.testmony-msg:after {
+    /*Criando a ponta da caixa de diágolo*/
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.testmony-box img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.testmony-name {
+    font-weight: bold;
+}
+/* 5 Seção blog-container*/
+#blog-container {
+    text-align: center;
+    padding: 5em 0;
+}
+#blog-container .p-center {
+    margin-bottom: 60px;
+}
+.article-box {
+    display: inline-block;
+    width: 31%;
+    padding: 0 1%;
+    text-align: left;
+}
+.article-box img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.article-box h4 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.article-box h4 a {
+    text-decoration: none;
+    color: #666;
+}
+.article-date {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+.article-resume {
+    font-size:14px;
+    margin-bottom:30px;
+}
+.article-btn {
+    background-color: #ffc8dd;
+    border-color: #ffc8dd;
+    color: #000;
+} 
+.article-btn:hover {
+    background-color: #FFF;
+    color: #ffc8dd;
+}
+/*Seção Carrossel */
+.center-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+#style h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: center;
+    
+}
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    max-width: 1200px;
+}
+.carousel-slide {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#prevBtn {
+    order: 1; /* Muda a ordem para o botão Anterior ficar à esquerda */
+}
+
+#nextBtn {
+    order: 2; /* O botão Próxima fica à direita */
+}
+.carousel-btn {
+    background-color: #ffc8dd;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    color: #ffc8dd;
+    background-color: transparent;
+    border:1px solid #ffc8dd;
+}
+
+/* Container stylings: 
+-> centers the whole content of the page
+-> defines width and height for container */
+
+
+.carousel-content {
+    position: absolute;
+
+    /* To center the content horizontally 
+       and vertically */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 50;
+}
+
+.carousel-heading {
+    font-size: 3rem;
+    color: #308d46;
+    margin-bottom: 1rem;
+}
+
+/* Slideshow stylings */
+.slideshow {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 80px;
+}
+
+/* Wrapper which wraps all the 
+   slideshow images stylings */
+.slideshow-wrapper {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    position: relative;
+    animation: slideshow 20s infinite;
+}
+
+/* Define width and height for images */
+.slide {
+    width: 100%;
+    height: 100%;
+    margin-left: 60px;
+}
+
+.slide-img {
+    width: 1300px;
+    height: 700px;
+    object-fit: cover;
+    
+}
+/* @keyframes are used to provide 
+animations We make these settings 
+for 4 image carousel. Make 
+modification accourding to your needs. */
+@keyframes slideshow {
+    0% {
+        left: 0;
+    }
+
+    10% {
+        left: 0;
+    }
+
+    15% {
+        left: -100%;
+    }
+
+    25% {
+        left: -100%;
+    }
+
+    30% {
+        left: -200%;
+    }
+
+    40% {
+        left: -200%;
+    }
+
+    45% {
+        left: -300%;
+    }
+
+    55% {
+        left: -300%;
+    }
+
+    60% {
+        left: -200%;
+    }
+
+    70% {
+        left: -200%;
+    }
+
+    75% {
+        left: -100%;
+    }
+
+    85% {
+        left: -100%;
+    }
+
+    90% {
+        left: 0%;
+    }
+}
+
+/* End of slideshow stylings */
+
+/* Carousel control buttons stylings */
+.slide-btn {
+    background-color: #fff;
+    border-radius: 50%;
+    border: .2rem solid #000;
+    width: 1.2rem;
+    height: 1.2rem;
+    outline: none;
+    cursor: pointer;
+
+    /* Stylings for positioning the 
+    buttons at the bottom of the 
+    carousel */
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 70;
+}
+
+/* As we provide position as absolute, 
+the buttons places one over the other. 
+So, we have to place them individually
+at their correct positions. */
+.slide-btn-1 {
+    left: 45%;
+}
+
+.slide-btn-2 {
+    left: 50%;
+}
+
+.slide-btn-3 {
+    left: 55%;
+}
+
+.slide-btn-4 {
+    left: 60%;
+}
+
+/* When we focus on the particular button, 
+the animation stops to that particular 
+image to which the button is associated. */
+.slide-btn-1:focus~.slideshow-wrapper {
+    animation: none;
+    left: 0;
+}
+
+.slide-btn-2:focus~.slideshow-wrapper {
+    animation: none;
+    left: -100%;
+}
+
+.slide-btn-3:focus~.slideshow-wrapper {
+    animation: none;
+    left: -200%;
+}
+
+.slide-btn-4:focus~.slideshow-wrapper {
+    animation: none;
+    left: -300%;
+}
+
+/* When we focus on the button, the 
+background color changes */
+.slide-btn:focus {
+    background-color: #ffc8dd;
+}
+/*Footer*/
+footer {
+    background: url(/ProjetoSite3/background-5431959_1280.jpg) no-repeat;
+    background-color: #ffc8dd; 
+    padding-top: 0.1em;  
+    padding-bottom: 40px;
+    border-top: 5px solid #fff;
+    background-size: cover;
+}
+footer h2, footer p, footer a, footer span {
+    color: #000;
+    font-family: 'Courier New', Courier, monospace ;
+    font-size: 25px;
+    font-weight: 900;
+}
+footer a {
+    text-decoration: none;
+}  
+footer ul {
+    padding: 0;
+}
+footer li {
+    list-style: none;
+}
+footer span {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 100px;
+    margin-bottom: 10px;
+}
+.footer-box {
+    width: 31%;
+    padding: 1%;
+    float: left;
+}
+.footer-box #footerh2 {
+    margin-top: 25px;
+}
+footer .wrapper:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+.company-footer {
+    width: 80%;
+}
+.company-footer h2 {
+    margin-top: 20px;
+}
+.company-footer h2,.company-footer p {
+    margin-bottom: 20px;
+}  
+.footer-list {
+    margin-bottom: 15px;
+}
+.footer-list a {
+    transition: 0.5s;
+}
+.footer-list a:hover {
+    color : #ffc8dd;
+}
+.footer-list li:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+.articles-footer {
+    width: 80%;
+}
+.footer-list.footer-article-list span {
+    display: block;
+    float: none;
+}
+.fab {
+    font-size: 30px;
+    margin-right: 10px;
+    float: left;
+}
+.footer-list li span {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+}
+.footer-bottom {
+    border-top: 1px solid #b2b2b2;
+}
+.footer-bottom p {
+    font-weight: 600;
+    margin-top: 40px;
+    font-size: 20px;
+    
+}
+
+/*Contact */
+.contact-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.contact-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-family: "Open Sans", sans-serif;
+    margin-top: 5px;
+}
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+}
+
+.contact-form {
+    flex: 1;
+    padding: 40px;
+}
+
+.contact-info h2 {
+    margin-top: 150px;
+    font-size: 24px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    margin-bottom: -100px;
+}
+
+.contact-form {
+    margin-top: 70px;
+    width: 500px;
+    line-height: 2em;
+    
+}
+.contact-form p {
+    margin-bottom: -90px;
+    line-height: 25px;
+}
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 120px;
+}
+
+button[type="submit"] {
+    background-color: #ffc8dd;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    color: #ffc8dd;
+    background-color: transparent;
+    border:1px solid #ffc8dd;
+}
+/*Cadastro dos usuários*/
+#form-contato {
+	background-color: #fff;
+	padding: 15px;
+	width: 800px;
+    height: 800px;
+	margin-top: 150px;
+    margin-left: 300px;
+    margin-bottom: 100px;
+    
+}
+#form-contato fieldset {
+	border-bottom: 0.5px solid #ccc;
+	margin-bottom: 16px;
+}
+#form-contato fieldset legend {
+	font-size: 100%;
+	font-weight: bold;
+	background-color: #fff;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+.input, textarea {
+	padding: 5px;
+	box-shadow: 1px 1px 3px #666;
+	margin-left: 10px;
+}
+select{
+	padding: 5px;
+	box-shadow: 1px 1px 3px #666 ;
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+input[type=radio], input[type=checkbox] {
+	box-shadow: 0 0 0 ;
+	margin-right: 20px;
+}
+input[type=text] {
+	width: 450px;
+}
+textarea {
+	margin-top: 10px;
+	width: 450px;
+	height: 100px;
+}
+label {
+	margin-left: 10px;
+}
+
+#info input{
+    margin-bottom: 10px;
+}
+input[type=submit],input[type=reset]{
+	background-color: #ffc8dd;
+	color: #000;
+	font-weight: 300;
+	font-size: 90%;
+	padding: 5px 10px;
+	cursor: pointer;
+    margin-left: 10px;
+}
+input[type=submit]:hover, input[type=reset]:hover {
+	background-color: #fff;
+	color: #000;
+	font-weight: bold;
+}
+/*==================================Responsividade========================================================*/
+/* Responsividade para 1024px - pra isso vamos utilizar as medias queries e caso nãp atenda a resolução em questão
+,o css ja pronto vai sobrepor*/
+@media screen and (max-width:1024px) 
+{
+    #logo {
+        position: absolute;
+        left: 50px;
+    }
+
+    .nav-container ul {
+        float: none;
+        text-align: center;
+        padding: 0;
+    }
+    .nav-container ul li {
+        /*vamos centrarlizar os itens da lista do menu*/
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        display: inline-block;
+        margin: 0 10px;
+    }
+    /*vamos descer o texto do banner na nav-container para baixo da imagem */
+    #search-form {
+        padding-top: 25em;
+        padding-bottom: 5em;
+    }
+    #search-form form {
+        width: 50%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #search-form form input,
+    #search-form form select {
+        display: block;
+        margin: 0;
+        margin-bottom: 25px;
+        width: 100%;
+        border-width: 0;
+        padding: 10px 20px;
+        box-sizing: border-box;
+    }
+    /*para a resolução 1024px esta ok mas, listas internas ficam ficam fora de posição,
+    vamos corrigir isso abaixo*/
+    #lastjobs-container.wrapper,
+    #status-container.wrapper,
+    #blog-container.wrapper,
+    .wrapper{
+        max-width: 960px;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+} 
+ /* após esse correção, podemos notar que ficou um espaçamento nas laterais, melhorando a visibilidade.*/
+  /*=======================Responsividade 425px a 576px==============================================*/
+    @media screen and (max-width: 576px) 
+{
+        .nav-container .btn-menumobile {
+            display: block !important;
+            /*vai obrigar aparecer nesse resolução 
+            ---> o !important é quando tem um alerta ou um item bem significativo
+            ---> não usar isso em mais que 10% do projeto!!*/
+        }
+        html,body {
+        overflow-x: hidden ;
+        }
+        nav {
+            height: 4em;
+        }
+        #logo {
+            left: 2em;
+            height: 2em;
+            width: 2em;
+            margin-top: 1em;
+        }
+        .btn-menumobile {
+            display: block;
+            font-size: 1.75em;
+            color: #ccc;
+            position: absolute;
+            right: 1.5em;
+            top: 0.75em;
+        }
+        .nav-container ul {
+            position: relative;
+            top: 4em;
+            height: 3em;
+            line-height: 3em;
+            display: none;
+        }
+        .nav-container ul li {
+            display: block;
+            background-color: #fff;
+            margin: 0;
+            border-top: 1px solid #ccc;
+        }
+        .nav-container ul li a {
+            font-size: 1em;
+        }
+        .open {
+            display: block !important;
+        }
+        #main-banner {
+            margin-top: 4em;
+        }
+        #search-form {
+            padding-top: 15em;
+            padding-bottom: 5em;
+            width: 90%;
+        }
+        #search-form h1 {
+            font-size: 1.6em;
+        }
+        #search-form p {
+            font-size: 1em;
+            margin-bottom: 2em;
+        }
+        #search-form form {
+            width: 80%;
+        }
+        #search-form input[type="submit"] {
+            margin-bottom: 0;
+        }
+        /*LAST JOBS - VAMOS OCULTAR A LOCALITY NESSA RESOLUÇÃO*/
+        #lastjobs-container {
+            padding: 5em 0;
+        }
+        .locality {
+            display: none;
+        }
+        .company-box .company-info {
+            margin-top: 1em;
+            margin-left: 1em;
+            width: 8em;
+        }
+        .company-box .company-info h3 {
+            font-size: 0.8em;
+        }
+        .job-type {
+            width: 22%;
+        }
+        /*SEND JOBS */
+        #sendjobs-container {
+            background-position: 35% 0; /*Diminuir a imagem do plano de fundo*/
+            padding: 10em 0;
+        }
+        #sendjobs-container h2{
+            font-size: 1.5em;
+            width: 100%;
+            text-shadow:  1px 1px #000;
+        }
+        #sendjobs-container p {
+            font-size: 1em;
+            width: 100%;
+            text-shadow: 1px 1px #000;
+        }
+        .status-box {
+            margin-top: 3em;
+            width: 100%;
+        }
+        .status-box:nth-child(1),
+        .status-box:nth-child(3) {
+            border: none;
+        }
+        #testmony-container {
+            padding: 5em 0;
+        }
+        .testmony-box {
+            width: 100%;
+        }
+        #testmony-container p {
+            margin-bottom: 1em;
+        }
+        .article-box {
+            width:  100%;
+            display: block;
+            padding:0;
+            margin-bottom: 3em;
+        }
+        /* Footer */
+        .footer-box{
+            display: block;
+            width: 100%;
+        }
+}

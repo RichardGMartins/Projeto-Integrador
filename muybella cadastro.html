@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+    initial-scale=1.0">
+    <title>Muy Bella Store</title>
+    <!--Link para chamar o arq styles.css na pasta css-->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!--Link das fontes-->
+    <script src="https://kit.fontawesome.com/617f4dcf0c.js" crossorigin="anonymous"></script>
+    <!--Link dos ícones-->
+</head>
+<body>
+    <div class="container" id="findjobs">
+     <!--Vamos especificar o tamanho da tela no css-->
+     <header><!--1. Banner-->
+        <nav><!--Menu superior-->
+            <div class="nav-container">
+                <a href="muybella.html"><img id="logo" src="./img/LOGO MUY BELLA OP2 S FUNDO.png" alt="JobFinder"></a>
+                <ul>
+                    <li><a href="muybella sobrenos.html">Sobre nós</a></li>
+                    <li><a href="muybella contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+     </header>
+     <div class="div-cadastro">
+        <div id="login">
+            <h2 id="h2-cadastro">LOGIN</h2>
+            <form action="logincliente.php" method="post">
+            <label for="email" >EMAIL</label>
+            <br>
+            <input type="text" name="email"  required>
+            <br>
+            <label for="password">SENHA</label>
+            <br>
+            <input type="password" name="senha" required>
+            <br>
+            <button type="submit">Login</button>
+            </form>
+            <h5><a href="#" id="toggleCadastra">Não tem Conta Clique Aqui</a></h5>
+        </div>
+        <div id="cadastra">
+                    <h2 id="h2-cadastro">CADASTRO</h2>
+                <form action="cadastrocliente.php" method="post">
+                <label >EMAIL</label><br>
+                <input type="email" name="email" required><br>
+                <label>SENHA</label><br>
+                <input type="password" name="senha" required><br>
+                <label>NOME COMPLETO</label><br>
+                <input type="text" name="nome"  required><br>
+                <label >TELEFONE/CELULAR</label><br>
+                <input type="tel" name="telefone"  required><br>
+                <label >CPF</label><br>
+                <input type="number" name="cpf"  required><br>
+                <button type="submit" id="btn2">Cadastrar</button>
+            </form>
+            <h5><a href="#" id="toggleLogin"> Tem Conta Clique Aqui</a></h5>
+         </div>
+    </div>
+        <!--6 Seção Footer-->
+        <footer>
+            <div class="wrapper">
+                <div class="footer-box">
+                    <div class="company-footer">
+                        <img src="./img/LOGO MUY BELLA OP2 S FUNDO.png">
+                        <h2>STORE</h2>
+                        <p>Seu Site de Compras de Roupa Favorito.</p>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <div class="articles-footer">
+                        <h2></h2>
+                        <ul class="footer-list footer-article-list">
+                            <li><a href="#"></a>
+                            <span class="article-date"></span></li>
+                            <li>
+                                <a href="#"></a>
+                            <span class="article-date"></span>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            <span class="article-date"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h2>Nos encontre nas rede sociais</h2>
+                    <ul class="footer-list">
+                        <li><a href="#"><i class="fab fa-facebook-square"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                        <li><a href="#"><i class="fab fa-instagram"></i>
+                            <span>Instragram</span>
+                        </a>
+                    </li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i>
+                        <span>Linkedin</span>
+                        </a>
+                    </li>
+                </ul>
+                </div>  
+            </div>
+                <div class="footer-bottom">
+                    <div class="wrapper">
+                        <p>Criador Richard Martins - TI26 | © Direito Reservados </p>
+                    </div>
+                </div>         
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" 
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="./js/scripts.js"></script>
+</body>
+</html>
+
