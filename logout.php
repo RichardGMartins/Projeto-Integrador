@@ -2,6 +2,6 @@
 session_start();// INICIA A SESSÃO
 session_destroy();// DESTROI A SESSÃO ATUAL
 //rEDIRECIONA O USUÁRIO PARA A PÁGINA DE LOGIN
-header("Location: login.php");
+header("Location: muybella cadastrousuario.html");
 exit;
 ?>

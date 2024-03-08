@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             VALUES ('$nome', '$email','$telefone','$cpf', 's', '$senha', '$tempero')";
             mysqli_query($link, $sql);
             echo "<script>window.alert('Bem Vindo! Ao Melhor Site de Compras de Roupas!');</script>";
-            echo "<script>window.location.href='muybella.html';</script>";
+            echo "<script>window.location.href='areacliente.php';</script>";
         }
     }
 }

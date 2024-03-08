@@ -31,8 +31,12 @@ $idusuario = $_SESSION['idusuario'];
                     <li><a href="cadastroprodutos.php">Cadastro de Produtos</a></li>
                     <li><a href="listaprodutos.php">Lista de Produtos</a></li>
                     <li><a href="listaclientes.php">Lista Clientes</a></li>
+                    <li><a href="listausuarios.php">Lista Usuarios</a></li>
+                    <li><a href="logout.php">Sair</a></li>
                 </ul>
             </div>
         </nav>  
+</header>
+</div>
 </body>
 </html>

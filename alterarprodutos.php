@@ -68,9 +68,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <link rel="stylesheet" href="./css/styles.css" >
 </head>
 <body>
-<div class="div-alteraproduto">
-<div class="div-alteraprod">
-        <form action="alteraproduto.php" method="post" enctype="multipart/form-data">
+<div class="div-alterarusuario">
+<div class="div-alterarusu">
+        <form action="alterarprodutos.php" method="post" enctype="multipart/form-data">
             <h2 id='h2-alterarprod'>Alteração Produtos</h2><br>
             <input type="hidden" name="id" value="<?= $id ?>">
             <label>Nome</label><br>

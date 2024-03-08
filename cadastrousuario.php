@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             $senha = md5($senha. $tempero);
 
             $sql = "INSERT INTO usuarios (usu_login, usu_senha,usu_status,usu_tempero)
-            VALUES ('$login', '$senha', 'n', '$tempero')";
+            VALUES ('$login', '$senha', 's', '$tempero')";
             echo($sql);
             //ALTER TABLE usuarios
             // ADD usu_tempero VARCHAR(50);

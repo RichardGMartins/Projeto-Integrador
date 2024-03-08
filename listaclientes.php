@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             </form>
             </div>
-            <div class="container">
+            <div class="container" id="center-container">
                 <table border="1">
                     <tr>
                         <th>NOME</th>
