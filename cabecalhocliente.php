@@ -56,9 +56,9 @@ $id = $_SESSION['idcliente'];
              echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='logincliente.html';</script>";
         } 
         ?>
-        </div>
-   
+        </div>     
 </div>
+
 </body>
 <script src="./script.js"></script>
 </html>

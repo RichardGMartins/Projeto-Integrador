@@ -34,8 +34,59 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <input type="number" name ="cpf" value="<?=$cpf?>" readonly> <br>
             <label>Telefone</label> <br>
             <input type="number" name ="telefone" value="<?=$telefone?>" readonly> <br>
+            <button><a href="endereco.php?id=<?=$id?>">ENDEREÇO</a></button>
             <button><a href="alterarcliente.php?id=<?=$id?>">ALTERAÇÃO DE CADASTRO</a></button>
         </form>
     </div>
     </div>
+    <footer>
+            <div class="wrapper">
+                <div class="footer-box">
+                    <div class="company-footer">
+                        <img src="./img/LOGO MUY BELLA OP2 S FUNDO.png">
+                        <h2>STORE</h2>
+                        <p>Seu Site de Compras de Roupa Favorito.</p>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <div class="articles-footer">
+                        <h2></h2>
+                        <ul class="footer-list footer-article-list">
+                            <li><a href="#"></a>
+                            <span class="article-date"></span></li>
+                            <li>
+                                <a href="#"></a>
+                            <span class="article-date"></span>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            <span class="article-date"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h2 id ="footerh2">Nos encontre nas rede sociais</h2>
+                    <ul class="footer-list">
+                        <li><a href="#"><i class="fab fa-facebook-square"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                        <li><a href="#"><i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                        </a>
+                    </li>
+                </ul>
+                </div>  
+            </div>
+                <div class="footer-bottom">
+                    <div class="wrapper">
+                        <p>Criador Richard Martins - TI26 | © Direito Reservados </p>
+                    </div>
+                </div>         
+        </footer>
 </body>
