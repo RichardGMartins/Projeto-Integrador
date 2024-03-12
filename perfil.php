@@ -34,9 +34,9 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <input type="number" name ="cpf" value="<?=$cpf?>" readonly> <br>
             <label>Telefone</label> <br>
             <input type="number" name ="telefone" value="<?=$telefone?>" readonly> <br>
-            <button><a href="endereco.php?id=<?=$id?>">ENDEREÇO</a></button>
             <button><a href="alterarcliente.php?id=<?=$id?>">ALTERAÇÃO DE CADASTRO</a></button>
         </form>
+            <a href="endereco.php?id=<?=$id?>"><button>ENDEREÇO</button></a>
     </div>
     </div>
     <footer>
