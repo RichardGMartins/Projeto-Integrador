@@ -10,6 +10,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
     $cpf = $_POST['cpf'];
+    $genero = $_POST['genero'];
+    $datanascimento = $_POST['datanascimento'];
 
     #Trim é usado para tirar os espaços do começo e do fim do nome para armazenar sem spacebar
     $nome = trim($nome);
@@ -17,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $email = trim($email);
     $telefone = trim($telefone);
     $cpf = trim($cpf);
+    $genero = trim($genero);
+    $datanascimento = trim($datanascimento);
     #POSSANDO INSTRUÇÕES SQL PARA O BANCO
     #VALIDANDO SE USUARIO EXISTE
     #preg_match é usado para o usuario colocar somente os caracteres a baixo sem o spacebar
@@ -41,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             $tempero = md5(rand(). date('H:i:s'));
             $senha = md5($senha. $tempero);
 
-            $sql = "INSERT INTO cliente (cli_nome,cli_email,cli_telefone,cli_cpf,cli_ativo, cli_senha,cli_tempero)
-            VALUES ('$nome', '$email','$telefone','$cpf', 's', '$senha', '$tempero')";
+            $sql = "INSERT INTO cliente (cli_nome,cli_email,cli_telefone,cli_cpf,cli_ativo, cli_senha,cli_tempero,cli_genero,cli_datanascimento)
+            VALUES ('$nome', '$email','$telefone','$cpf', 's', '$senha', '$tempero','$genero','$datanascimento')";
             mysqli_query($link, $sql);
             echo "<script>window.alert('Bem Vindo! Ao Melhor Site de Compras de Roupas!');</script>";
             echo "<script>window.location.href='areacliente.php';</script>";

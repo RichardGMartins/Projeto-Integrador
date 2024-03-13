@@ -540,14 +540,14 @@ nav:after{
 .slide {
     width: 100%;
     height: 100%;
-    margin-left: 60px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 .slide-img {
-    width: 1300px;
-    height: 700px;
+    width: 600px;
     object-fit: cover;
-    
 }
 /* @keyframes are used to provide 
 animations We make these settings 
@@ -613,12 +613,11 @@ modification accourding to your needs. */
 .slide-btn {
     background-color: #fff;
     border-radius: 50%;
-    border: .2rem solid #000;
+    border: .2rem solid #ffafcc;
     width: 1.2rem;
     height: 1.2rem;
     outline: none;
     cursor: pointer;
-
     /* Stylings for positioning the 
     buttons at the bottom of the 
     carousel */
@@ -960,7 +959,15 @@ input[type=submit]:hover, input[type=reset]:hover {
     border-radius: 4px;
     font-size: 14px;
   }
-  
+#cadastra select {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 63.5%;
+    margin-right: 10px;
+}
 #cadastra button {
     background-color: #ffc8dd;
     color: #000;
