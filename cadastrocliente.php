@@ -1,6 +1,6 @@
 <?php 
 #Inicia a conexão com o banco de dados
-
+session_start();
 include("conectadb.php");
 #Coleta de variáveis via formulário de HTML
 if ($_SERVER["REQUEST_METHOD"]=="POST")
@@ -50,6 +50,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             mysqli_query($link, $sql);
             echo "<script>window.alert('Bem Vindo! Ao Melhor Site de Compras de Roupas!');</script>";
             echo "<script>window.location.href='areacliente.php';</script>";
+           
+           
+            $sql = "SELECT * FROM cliente WHERE cli_email = '$email' AND cli_senha = '$senha' AND cli_ativo='s'";
+            $retorno = mysqli_query($link,$sql);
+            while ($tbl = mysqli_fetch_array($retorno)){
+                $_SESSION['idcliente'] = $tbl[0]; //tbl é a coluna dentro do banco de dados
+                $_SESSION['nomecliente'] = $tbl[1];
+            } 
         }
     }
 }

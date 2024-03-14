@@ -31,7 +31,7 @@ $id = $_SESSION['idcliente'];
         <?php
         if($nomecliente == null){
         
-             echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='logincliente.html';</script>";
+             echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='muybella cadastro.html';</script>";
         } 
         ?>
         </div>

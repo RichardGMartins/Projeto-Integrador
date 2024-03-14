@@ -9,8 +9,8 @@ while ($tbl = mysqli_fetch_array($retorno)){
     $email = $tbl[2]; #Campo email
     $telefone = $tbl[3]; #Campo telefone
     $cpf = $tbl[4]; #Campo cpf
-    $datadenascimento = $tbl[8];
-    $genero = $tbl[9];
+    $datadenascimento = $tbl[9];
+    $genero = $tbl[8];
 }
 
 ?>
@@ -35,13 +35,13 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <label>CPF</label> <br>
             <input type="number" name ="cpf" value="<?=$cpf?>" readonly> <br>
             <label>Data de Nascimento</label> <br>
-            <input type="number" name ="datadenascimento" value="<?=$datadenascimento?>" readonly> <br>
+            <input type="date" name ="datadenascimento" value="<?=$datadenascimento?>" readonly> <br>
             <label>Gênero</label> <br>
             <input type="text" name ="genero" value="<?=$genero?>" readonly> <br>  
             <label>Telefone</label> <br>
             <input type="number" name ="telefone" value="<?=$telefone?>" readonly> <br>
-            <button><a href="alterarcliente.php?id=<?=$id?>">ALTERAÇÃO DE CADASTRO</a></button>
         </form>
+            <a href="alterarcliente.php?id=<?=$id?>"><button>ALTERAÇÃO DE CADASTRO</button></a>
             <a href="enderecocobranca.php?id=<?=$id?>"><button>ENDEREÇO DE COBRANÇA</button></a>
             <a href="endereco.php?id=<?=$id?>"><button>ENDEREÇO</button></a>
     </div>
