@@ -24,6 +24,7 @@ $id = $_SESSION['idcliente'];
                 <ul>
                     <div class="menu-perfil">
                     <li onclick="ativaPerfil()" id="user" class="user"><ul id="nav-perfil" class="nav-perfil"> 
+                    <li><a href="loja.php">LOJA</a></li>
                     <li><a href="perfil.php?id=<?=$id?>">PERFIL</a></li>
                     <li><a href="logoutcliente.php">SAIR</a></li>
                     </ul> 
