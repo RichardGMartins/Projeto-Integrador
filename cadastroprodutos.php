@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         else
         {
         $sql = "INSERT INTO produtos(prod_nome, prod_descricao, prod_quantidade,prod_categoria,prod_marca,prod_custo,prod_valor,prod_ativo,prod_img)
-         VALUES ('$nome','$descricao',$quantidade,'$categoria','$marca','$custo',$valor,'n','$imagem_base64')";
+         VALUES ('$nome','$descricao',$quantidade,'$categoria','$marca','$custo',$valor,'s','$imagem_base64')";
          echo $sql; //para debugar e puxar o que esta passando para banco de dados
         $retorno = mysqli_query($link, $sql);
         echo "<script>window.alert('PRODUTO CADASTRADO COM SUCESSO');</script>";

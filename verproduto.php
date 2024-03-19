@@ -85,22 +85,6 @@ while($tbl = mysqli_fetch_array($retorno)){
     $preco = $tbl[7]; 
     $imagem_atual = $tbl[9];
 }
-if(isset($idclientes)){
-    $sql = "SELECT COUNT(fav_id) FROM favoritos WHERE fk_cli_id = $idclientes AND fk_pro_id = $id";
-    $retorno = mysqli_query($link,$sql);
-
-    while($tbl = mysqli_fetch_array($retorno)){
-        $cont = $tbl[0];
-        if($cont <= 0){
-            $coracao = "https://icones.pro/wp-content/uploads/2021/02/icone-de-coeur-noir.png";
-        } else {
-            $coracao = "https://icones.pro/wp-content/uploads/2021/02/icone-de-coeur-rouge-1.png";
-        }
-    }
-}else {
-    $coracao = "https://icones.pro/wp-content/uploads/2021/02/icone-de-coeur-noir.png"; 
-}
-
 ?>
 
 
@@ -116,7 +100,7 @@ if(isset($idclientes)){
 <body>
     <div class="div-foorm3">
     <div class="div-form3">
-        <form action="verproduto.php" class="visualizaproduto" method="post" enctype="multipart/form-data">
+        <form action="carrinho.php" class="visualizaproduto" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id ?>" readonly>
             <div class="nomeproduto"><?=$nomeproduto?></div>
             <div class="span-preco"><span>R$ <?=$preco?></span></div><br>

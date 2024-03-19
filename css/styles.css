@@ -1126,7 +1126,7 @@ a {
 }
 /*Cadastra Produtos*/
 #div-produto {
-    margin-top: 50px;
+    margin-top: 150px;
     padding: 0px 400px 0px 400px;
     text-align: center;
     margin-bottom: 250px;
@@ -1488,7 +1488,6 @@ a {
       margin-top: -410px;
       position: absolute;
       border-radius: 20%;
-      border: 2px solid #ffafcc;
   }
   .favoritos .heart {
       position: inherit;
@@ -1500,7 +1499,7 @@ a {
     margin-top: -580px;
     position: absolute;
     border-radius: 20%;
-    border: 2px solid #ffafcc;
+
 }
 .favoritos .heart {
     position: inherit;
@@ -1508,7 +1507,7 @@ a {
     margin-left: 925px;
 }
 .nomeproduto {
-    min-height: 100px;
+    min-height: 125px;
     text-transform: uppercase;
     color: #2f2f2f;
     font-weight: 500;
@@ -1534,6 +1533,66 @@ a {
     text-transform: uppercase;
     font-weight: 900;
 }
+/*FINALIZA CARRINHO*/
+.div-form4{
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .plus-button {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 15;
+  }
+  .plus-button1{
+    padding: 7px 8px;
+  }
+  .plus-button2{
+    padding: 7px 8px;
+  }
+  .preco {
+    width: 100px;
+  }
+  .number {
+    margin-top: 20px;
+  }
+  .titulo {
+    width: 100px;
+  }
+  .quantidade {
+    font-weight: bold;
+  }
+  .div-form5{
+    background-color: #fff;
+    color: #000;
+    height: 100px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 30px;
+    font-weight: bold;
+  }
+  #btn4 {
+    background-color:#ffafcc;
+    padding: 8px 16px;
+    color:#000;
+    border-radius: 10px;
+    height: 80px;
+    transition: 1s;
+    cursor: pointer;
+  }
+  #btn4:hover {
+    background-color: #FFF;
+    box-shadow:2px solid #000 ;
+  }
+  #click:visited {
+    color: #000;
+  }
+
+  .div-form6  h3{
+      text-align: center;
+      color: #fff;
+  }
 /*==================================Responsividade========================================================*/
 /* Responsividade para 1024px - pra isso vamos utilizar as medias queries e caso nãp atenda a resolução em questão
 ,o css ja pronto vai sobrepor*/
