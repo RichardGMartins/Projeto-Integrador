@@ -4,7 +4,7 @@ session_start();
 //isset é para saber se esta logado
 isset($_SESSION['nomecliente'])?$nomecliente = $_SESSION['nomecliente']:"";
 $nomecliente = $_SESSION['nomecliente'];
-$id = $_SESSION['idcliente'];
+$idclientes = $_SESSION['idcliente'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +25,7 @@ $id = $_SESSION['idcliente'];
                     <div class="menu-perfil">
                     <li onclick="ativaPerfil()" id="user" class="user"><ul id="nav-perfil" class="nav-perfil"> 
                     <li><a href="loja.php">LOJA</a></li>
+                    <li><a href="carrinho.php">CARRINHO</a></li>
                     <li><a href="perfil.php?id=<?=$id?>">PERFIL</a></li>
                     <li><a href="logoutcliente.php">SAIR</a></li>
                     </ul> 

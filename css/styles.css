@@ -1454,28 +1454,10 @@ a {
     line-height: 20px;
     margin-left: 100px;
   }
-  .div-form3 input, textarea {
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 30px;
-  }
+
   .div-form3 label {
     margin-bottom: 8px;
     color: #555;
-  }
-  .div-form3 #btn {
-    border: 2px solid #000;
-    padding: 12px 16px;
-    border-radius: 15px;
-    color:#000;
-    background-color:#e29578;
-    transition: 1s;
-    margin-left: 350px;
-    cursor: pointer;
-    font-size: 12px;
   }
   .div-form3 #btn:hover {
     border:2px solid #83c5be;
@@ -1510,30 +1492,45 @@ a {
     min-height: 125px;
     text-transform: uppercase;
     color: #2f2f2f;
-    font-weight: 500;
+    font-weight: 900;
     font-size: 36px;
     line-height: 37px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .span-desc {
-    min-height: 100px;
+    min-height: 70px;
 }
 .span-desc span {
     font-size: 22px;
+    font-weight: 500;
     color: #000;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .span-preco {
-    min-height: 35px;
-}
-.span-preco span {
+    min-height: 50px;
     font-size: 30px;
     color: #2f2f2f;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: uppercase;
     font-weight: 900;
+    border: none;
+    margin-bottom: 20px;
+}
+
+#quantidade {
+    width: 30px;
+    height: 32px;
+    font-size: 16px;
+    font-weight: 700;
 }
 /*FINALIZA CARRINHO*/
+.img2 {
+    height: 160px;
+    border-radius: 10px;
+    border: 3px solid #ffafcc;
+    width: 150px;
+    text-align: center;
+  }
 .div-form4{
     background-color: #fff;
     color: #000;

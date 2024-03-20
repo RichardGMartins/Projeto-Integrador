@@ -18,7 +18,7 @@ if ($idclientes <= 0){
     echo"<script>window.location.href='loja.php';</script>";
 } else {
     //VERIFICA SE EXISTE UM CARRINHO JÁ ABERTO
-    $sql = "SELECT COUNT(car_id) FROM carrinho INNER JOIN clientes ON fk_cli_id = cli_id WHERE cli_id = $idclientes AND car_finalizada = 'n'";
+    $sql = "SELECT COUNT(car_id) FROM carrinho INNER JOIN cliente ON fk_cli_id = cli_id WHERE cli_id = $idclientes AND car_finalizada = 'n'";
     
     $retorno = mysqli_query($link,$sql);
     //SE CARRINHO NÃO EXISTE CRIA UM NOVO CARRINHO
@@ -30,10 +30,10 @@ if ($idclientes <= 0){
             $valor_venda = $quantidade * $preco;
 
             //SE O CARRINHO NÃO EXISTE GERA UM NOVO CARRINHO E INSERE NA TABELA  ITENS DO CARRINHO
-            $sql = "INSERT INTO carrinho(car_id, car_valorvenda,fk_cli_id, car_finalizada) VALUES ('$numerocarrinho',$valor_venda,$idclientes,'n')";
+            $sql = "INSERT INTO carrinho(car_id,fk_cli_id, car_valorvenda,car_finalizada) VALUES ('$numerocarrinho',$idclientes,$valor_venda,'n')";
             mysqli_query($link,$sql);
 
-            $sql2 = "INSERT INTO item_carrinho(fk_car_id,fk_pro_id,car_item_quantidade) VALUES ('$numerocarrinho',$id,$quantidade)";
+            $sql2 = "INSERT INTO item_carrinho(fk_car_id,fk_prod_id,car_item_quantidade) VALUES ('$numerocarrinho',$id,$quantidade)";
             mysqli_query($link,$sql2);
             $_SESSION['carrinhoid'] = $numerocarrinho;
             echo"<script>window.alert('PRODUTO ADICIONADO AO CARRINHO $numerocarrinho');</script>";
@@ -49,7 +49,7 @@ if ($idclientes <= 0){
                 
                 #Verifica se já existe esse item ao carrinho
                 #Se já existe, atualiza a quantidade
-                $sql2 = "SELECT car_item_quantidade FROM item_carrinho WHERE fk_car_id = '$numerocarrinho' AND fk_pro_id = $id";
+                $sql2 = "SELECT car_item_quantidade FROM item_carrinho WHERE fk_car_id = '$numerocarrinho' AND fk_prod_id = $id";
                 $retorno2 = mysqli_query($link,$sql2);
                 $qntd_atual = mysqli_fetch_array($retorno2);
 
@@ -62,7 +62,7 @@ if ($idclientes <= 0){
                     }
                     #Se já existe, adiciona o novo item
                     else{
-                        $sql = "INSERT INTO item_carrinho(fk_car_id, fk_pro_id, car_item_quantidade) VALUES ('$numerocarrinho','$id',$quantidade)";
+                        $sql = "INSERT INTO item_carrinho(fk_car_id, fk_prod_id, car_item_quantidade) VALUES ('$numerocarrinho','$id',$quantidade)";
                         mysqli_query($link,$sql);
                         echo ("<script>window.alert('Produto adicionado ao carrinho $numerocarrinho');</script>");
                         echo ("<script>window.location.href='loja.php';</script>");
@@ -84,6 +84,7 @@ while($tbl = mysqli_fetch_array($retorno)){
     $descricao = $tbl[2]; 
     $preco = $tbl[7]; 
     $imagem_atual = $tbl[9];
+    $quantidade = $tbl[3];
 }
 ?>
 
@@ -100,11 +101,11 @@ while($tbl = mysqli_fetch_array($retorno)){
 <body>
     <div class="div-foorm3">
     <div class="div-form3">
-        <form action="carrinho.php" class="visualizaproduto" method="post" enctype="multipart/form-data">
+        <form action="verproduto.php" class="visualizaproduto" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id ?>" readonly>
-            <div class="nomeproduto"><?=$nomeproduto?></div>
-            <div class="span-preco"><span>R$ <?=$preco?></span></div><br>
+            <div class="nomeproduto"><?=$nomeproduto?></div><br>
             <div class="span-desc"><span><?=$descricao?></span></div><br>
+            <input type="number" name="preco" class="span-preco" value="<?=$preco?>" readonly><br>
             <input type="number" name="quantidade" id="quantidade" min="1" value="1">
             <button type="submit" id="btn2">ADICIONAR AO CARRINHO </button>
         </form>
