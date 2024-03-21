@@ -1,8 +1,6 @@
 <?php
 include("cabecalhocliente.php");
 
-$id = $_GET['id'];
-
 if($_SERVER['REQUEST_METHOD'] == "POST"){
         $rua = $_POST['rua'];
         $cidade = $_POST['cidade'];
@@ -13,8 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $bairro = $_POST['bairro'];
         $numero = $_POST['numero'];
 
-        $sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id = $id ";
-        echo $sql;
+        $sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id = $idclientes ";
         $retorno = mysqli_query($link, $sql);
         while ($tbl = mysqli_fetch_array($retorno))
         {
@@ -27,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         else
         {
             $sql = "INSERT INTO endereco_cobranca (end_cob_rua,end_cob_cidade,end_cob_estado,end_cob_pais,end_cob_codigo_postal,fk_cli_id,end_cob_complemento,end_cob_bairro,end_cob_numero)
-            VALUES ('$rua', '$cidade','$estado','$pais', '$codigopostal', '$id', '$complemento' , '$bairro', $numero)";
+            VALUES ('$rua', '$cidade','$estado','$pais', '$codigopostal', '$idclientes', '$complemento' , '$bairro', $numero)";
             mysqli_query($link, $sql);
             echo "<script>window.alert('ENDEREÇO CADASTRADO COM SUCESSO!');</script>";
             echo "<script>window.location.href='areacliente.php';</script>";
@@ -40,13 +37,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Cadastrar Produtos</title>
+    <title>Cadastrar Endereço de Cobrança</title>
 </head>
 <body>
     <div id="div-produto">
         <div id="div-produtos">
                 <h2>Cadastro de Endereço de Cobrança</h2>
-            <form action="cadastroenderecocobranca.php?id=<?=$id?>" method="post" >
+            <form action="cadastroenderecocobranca.php>" method="post" >
                 <label for="">Rua</label>
                 <br>
                 <input type="text" name='rua' id="rua">

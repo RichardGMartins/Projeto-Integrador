@@ -1,8 +1,6 @@
 <?php 
 include("cabecalhocliente.php");
 
-$idclientes = $_SESSION['idcliente'];
-
 $sql = "SELECT c.car_id, c.fk_cli_id, c.car_finalizada,p.prod_id,p.prod_nome,p.prod_descricao,p.prod_valor,p.prod_img,
 ic.car_item_quantidade,ic.fk_car_id,ic.fk_prod_id FROM carrinho c JOIN item_carrinho ic ON c.car_id = ic.fk_car_id JOIN produtos p ON 
 ic.fk_prod_id = p.prod_id WHERE c.fk_cli_id = $idclientes AND c.car_finalizada = 'n'";
@@ -51,7 +49,7 @@ while($row = mysqli_fetch_assoc($retorno2)){
     ?>
     <table class="div-form5">
             <td>SubTotal R$:<?=$total?></td>
-            <td><button id="btn4"><a  id="click" href="finaliza_carrinho.php?id=<?=($idclientes)?>">Concluir Compra</a></button></td>
+            <td><a  id="click" href="confirma_endereco.php"><button id="btn4">Concluir Compra</button></a></td>
     </table>
 </body>
 </html>

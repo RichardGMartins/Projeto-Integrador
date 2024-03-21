@@ -26,10 +26,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     while ($tbl = mysqli_fetch_array($retorno)){
         $_SESSION['idcliente'] = $tbl[0]; //tbl é a coluna dentro do banco de dados
         $_SESSION['nomecliente'] = $tbl[1];
-    }   
         echo "<script>window.location.href='areacliente.php';</script>";
-}   else {
-        echo "<script>window.alert('USUARIO OU SENHA INCORRETOS')';</script>";
+    } 
+ }   
+   else {
+        echo "<script>window.alert('USUARIO OU SENHA INCORRETOS');</script>";
+        echo "<script>window.location.href='muybella cadastro.html';</script>";
 } 
 }
 ?>

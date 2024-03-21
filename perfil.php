@@ -1,8 +1,12 @@
 <?php 
 include("cabecalhocliente.php");
+//isset é para saber se esta logado
+isset($_SESSION['nomecliente'])?$nomecliente = $_SESSION['nomecliente']:"";
+$nomecliente = $_SESSION['nomecliente'];
+$idclientes = $_SESSION['idcliente'];
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM cliente WHERE cli_id =$id";
+
+$sql = "SELECT * FROM cliente WHERE cli_id =$idclientes";
 $retorno = mysqli_query($link,$sql);
 while ($tbl = mysqli_fetch_array($retorno)){
     $nome = $tbl[1]; #Campo nome
@@ -41,9 +45,9 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <label>Telefone</label> <br>
             <input type="number" name ="telefone" value="<?=$telefone?>" readonly> <br>
         </form>
-            <a href="alterarcliente.php?id=<?=$id?>"><button>ALTERAÇÃO DE CADASTRO</button></a>
-            <a href="enderecocobranca.php?id=<?=$id?>"><button>ENDEREÇO DE COBRANÇA</button></a>
-            <a href="endereco.php?id=<?=$id?>"><button>ENDEREÇO</button></a>
+            <a href="alterarcliente.php"><button>ALTERAÇÃO DE CADASTRO</button></a>
+            <a href="enderecocobranca.php"><button>ENDEREÇO DE COBRANÇA</button></a>
+            <a href="endereco.php"><button>ENDEREÇO</button></a>
     </div>
     </div>
     <footer>

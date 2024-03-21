@@ -11,7 +11,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     #BUSCAR O TEMPERO
     $sql = "SELECT cli_tempero FROM cliente WHERE cli_email = '$email'";
-    echo $sql;
     $retorno = mysqli_query($link,$sql);
     while ($tbl = mysqli_fetch_array($retorno)){
         $tempero = $tbl[0];
@@ -20,15 +19,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if($senha != $senha2){
         $senha = md5($senha.$tempero);
     }
-    $sql = "UPDATE cliente SET cli_nome = '$nome',cli_email = '$email',cli_telefone = '$telefone',cli_senha = '$senha',cli_genero = '$genero',cli_datanascimento ='$datanascimento' WHERE cli_id = $id";
+    $sql = "UPDATE cliente SET cli_nome = '$nome',cli_email = '$email',cli_telefone = '$telefone',cli_senha = '$senha',cli_genero = '$genero',cli_datanascimento ='$datanascimento' WHERE cli_id = $idclientes";
     mysqli_query($link,$sql);
 
     echo("<script>window.alert('Usuario alterado com sucesso !')</script>");
-    echo("<script>window.location.href='perfil.php?id=$id';</script>");
+    echo("<script>window.location.href='perfil.php';</script>");
     exit();
 }
-$id = $_GET['id'];
-$sql = "SELECT * FROM cliente WHERE cli_id =$id";
+$sql = "SELECT * FROM cliente WHERE cli_id =$idclientes";
 $retorno = mysqli_query($link,$sql);
 
 while ($tbl = mysqli_fetch_array($retorno)){
@@ -38,7 +36,6 @@ while ($tbl = mysqli_fetch_array($retorno)){
     $cpf = $tbl[4];
     $datanascimento = $tbl[9]; #Campo curso
     $genero = $tbl[8]; #Campo sala
-    $senha = $tbl[6]; #Campo senha
     $senha2 = $senha;
 }
 ?>
@@ -64,8 +61,6 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <input type="number" name ="telefone" value="<?=$telefone?>"required><br>
             <label>Cpf</label><br>
             <input type="text" name ="cpf" value="<?=$cpf?>"required><br>
-            <label>Senha</label><br>
-            <input type="password" name ="senha" value="<?=$senha?>"required><br>
             <label>Gênero</label><br>
             <select name="genero" id="genero">
                     <option value="vazio"<?php if ($genero == null) echo 'selected'; ?>>Selecione o gênero</option>
@@ -76,8 +71,9 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <label>Data de Nascimento</label><br>
             <input type="date" name ="datanascimento" value="<?=$datanascimento?>"required>
             <br>
-            <button type="submit" name = "cadastro" id = "btn">Alterar</button>
+            <button type="submit" name = "cadastro" id = "btn">ALTERAR</button>
         </form>
+        <a href="recuperasenha.php"><button>ALTERAR SENHA</button></a>
     </div>
 </div>
 </body>

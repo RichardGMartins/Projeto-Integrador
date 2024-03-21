@@ -1,21 +1,20 @@
 <?php 
 include("cabecalhocliente.php");
 
-$id = $_GET['id'];
 
-$sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id =$id ";
+$sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id =$idclientes ";
     $retorno = mysqli_query($link, $sql);
     while ($tbl = mysqli_fetch_array($retorno))
     {
         $cont = $tbl[0];
     }
     #VERIFICAÇÃO SE USUARIO EXISTE, SE EXISTE = 1 SENÃO = 0
-    if ($cont < 1)
+    if ($cont == 0)
     {
-        echo "<script>window.location.href='cadastroenderecocobranca.php?id=$id';</script>";
+        echo "<script>window.location.href='cadastroenderecocobranca.php;</script>";
     }
 
-    $sql = "SELECT * FROM endereco_cobranca WHERE fk_cli_id =$id";
+    $sql = "SELECT * FROM endereco_cobranca WHERE fk_cli_id =$idclientes";
     $retorno = mysqli_query($link,$sql);
 
     while ($tbl = mysqli_fetch_array($retorno)){
@@ -38,7 +37,7 @@ $sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id =$id ";
         $bairro = $_POST['bairro'];
         $numero = $_POST['numero'];
         
-        $sql = "UPDATE endereco_cobranca SET end_cob_rua = '$rua', end_cob_cidade = '$cidade', end_cob_estado = '$estado',end_cob_pais = '$pais',end_cob_codigo_postal ='$codigopostal',end_cob_complemento ='$complemento', end_cob_bairro ='$bairro', end_cob_numero = '$numero' WHERE fk_cli_id = $id";
+        $sql = "UPDATE endereco_cobranca SET end_cob_rua = '$rua', end_cob_cidade = '$cidade', end_cob_estado = '$estado',end_cob_pais = '$pais',end_cob_codigo_postal ='$codigopostal',end_cob_complemento ='$complemento', end_cob_bairro ='$bairro', end_cob_numero = '$numero' WHERE fk_cli_id = $idclientes";
         mysqli_query($link, $sql);
 
         echo ("<script>window.alert('Endereço alterado com sucesso!');</script>");

@@ -1,5 +1,5 @@
 <?php 
-include('cabecalholoja.php');
+include('cabecalhocliente.php');
 
 $sql = "SELECT c.car_id, c.fk_cli_id, c.car_finalizada,p.prod_id,p.prod_nome,p.prod_descricao,p.prod_valor,p.prod_img,
 ic.car_item_quantidade,ic.fk_car_id,ic.fk_prod_id FROM carrinho c JOIN item_carrinho ic ON c.car_id = ic.fk_car_id JOIN produtos p ON 
@@ -46,8 +46,6 @@ $total_itens = mysqli_fetch_array($retorno3);
 $sql_total = "UPDATE carrinho SET car_valorvenda = $total,car_datavenda='$data', car_finalizada ='s',car_total_item = $total_itens[0] WHERE car_id = $tbl[0]";
 $resultado2 = mysqli_query($link,$sql_total);
 
-
-
-header("Location: loja.php");
-
+echo("<script>window.alert('PARABÉNS POR SUA COMPRA E APROVEITE MUITO AS SUAS NOVAS ROUPAS!')</script>");
+echo "<script>window.location.href='areacliente.php';</script>";
 ?>
