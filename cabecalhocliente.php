@@ -20,7 +20,7 @@ $idclientes = $_SESSION['idcliente'];
      <header><!--1. Banner-->
         <nav><!--Menu superior-->
             <div class="nav-container">
-                <a href="muybella.html"><img id="logo" src="./img/LOGO MUY BELLA OP2 S FUNDO.png" alt="JobFinder"></a>
+                <a href="muybella.html"><img id="logo" src="./img/LOGO MUY BELLA  - HEART.png"  alt="JobFinder"></a>
                 <ul>
                     <div class="menu-perfil">
                     <li onclick="ativaPerfil()" id="user" class="user"><ul id="nav-perfil" class="nav-perfil"> 

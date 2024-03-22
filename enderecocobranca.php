@@ -9,10 +9,11 @@ $sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id =$idclien
         $cont = $tbl[0];
     }
     #VERIFICAÇÃO SE USUARIO EXISTE, SE EXISTE = 1 SENÃO = 0
-    if ($cont == 0)
+    if ($cont < 1)
     {
-        echo "<script>window.location.href='cadastroenderecocobranca.php;</script>";
+        echo "<script>window.location.href='cadastroenderecocobranca.php';</script>";
     }
+    else{
 
     $sql = "SELECT * FROM endereco_cobranca WHERE fk_cli_id =$idclientes";
     $retorno = mysqli_query($link,$sql);
@@ -27,6 +28,7 @@ $sql = "SELECT COUNT(fk_cli_id) FROM endereco_cobranca WHERE fk_cli_id =$idclien
         $complemento = $tbl[7];
         $codigopostal = $tbl[5];
     }
+}
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $rua = $_POST['rua'];
         $cidade = $_POST['cidade'];

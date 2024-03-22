@@ -13,7 +13,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $numero = $_POST['numero'];
 
         $sql = "SELECT COUNT(fk_cli_id) FROM endereco_entrega WHERE fk_cli_id = $idclientes ";
-        echo $sql;
         $retorno = mysqli_query($link, $sql);
         while ($tbl = mysqli_fetch_array($retorno))
         {

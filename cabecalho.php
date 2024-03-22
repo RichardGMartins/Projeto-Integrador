@@ -26,14 +26,21 @@ $idusuario = $_SESSION['idusuario'];
      <header><!--1. Banner-->
         <nav><!--Menu superior-->
             <div class="nav-container">
-                <a href="muybella.html"><img id="logo" src="./img/LOGO MUY BELLA OP2 S FUNDO.png" alt="JobFinder"></a>
+                <a href="muybella.html"><img id="logo" src="./img/LOGO MUY BELLA  - HEART.png"  alt="JobFinder"></a>
                 <ul>
-                    <li><a href="cadastroprodutos.php">Cadastro de Produtos</a></li>
+                    <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </div>
+            <div class="container" id="findjobs">
+            <div class="nav-container2">
+                    <ul><li><a href="cadastroprodutos.php">Cadastro de Produtos</a></li>
                     <li><a href="listaprodutos.php">Lista de Produtos</a></li>
                     <li><a href="listaclientes.php">Lista Clientes</a></li>
                     <li><a href="listausuarios.php">Lista Usuarios</a></li>
-                    <li><a href="logout.php">Sair</a></li>
-                </ul>
+                    <li><a href="depoimentos.php">Depoimentos</a></li>
+                    <li><a href="pagamentos.php">Pagamentos</a></li>
+                    </ul>
+            </div>
             </div>
         </nav>  
 </header>
