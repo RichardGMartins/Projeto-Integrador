@@ -37,7 +37,7 @@ $idusuario = $_SESSION['idusuario'];
                     <li><a href="listaprodutos.php">Lista de Produtos</a></li>
                     <li><a href="listaclientes.php">Lista Clientes</a></li>
                     <li><a href="listausuarios.php">Lista Usuarios</a></li>
-                    <li><a href="depoimentos.php">Depoimentos</a></li>
+                    <li><a href="listadepoimentos.php">Depoimentos</a></li>
                     <li><a href="pagamentos.php">Pagamentos</a></li>
                     </ul>
             </div>
