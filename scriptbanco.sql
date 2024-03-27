@@ -1,5 +1,6 @@
 CREATE DATABASE muybella;
 
+
 USE muybella;
 
 CREATE TABLE cliente (
