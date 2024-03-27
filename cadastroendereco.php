@@ -1,37 +1,43 @@
 <?php
 include("cabecalhocliente.php");
 
-
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $rua = $_POST['rua'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
-        $pais = $_POST['pais'];
-        $codigopostal = $_POST['codigopostal'];
-        $complemento = $_POST['complemento'];
-        $bairro = $_POST['bairro'];
-        $numero = $_POST['numero'];
+    $rua = $_POST['rua'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    $pais = $_POST['pais'];
+    $codigopostal = $_POST['codigopostal'];
+    $complemento = $_POST['complemento'];
+    $bairro = $_POST['bairro'];
+    $numero = $_POST['numero'];
 
-        $sql = "SELECT COUNT(fk_cli_id) FROM endereco_entrega WHERE fk_cli_id = $idclientes ";
-        $retorno = mysqli_query($link, $sql);
-        while ($tbl = mysqli_fetch_array($retorno))
-        {
-            $cont = $tbl[0];
-        }
-        if ($cont == 1)
-        {
-            echo "<script>window.alert('ENDEREÇO JÁ CADASTRADO!';</script>)";
-        }
-        else
-        {
-            $sql = "INSERT INTO endereco_entrega (end_rua,end_cidade,end_estado,end_pais,end_codigo_postal,fk_cli_id,end_complemento,end_bairro,end_numero)
-            VALUES ('$rua', '$cidade','$estado','$pais', '$codigopostal', '$idclientes', '$complemento' , '$bairro', $numero)";
-            mysqli_query($link, $sql);
-            echo "<script>window.alert('ENDEREÇO CADASTRADO COM SUCESSO!');</script>";
-            echo "<script>window.location.href='areacliente.php';</script>";
-        }
+    $sql = "SELECT COUNT(fk_cli_id) FROM endereco_entrega WHERE fk_cli_id = ?";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $idclientes);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $cont);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    if ($cont == 1)
+    {
+        echo "<script>window.alert('ENDEREÇO JÁ CADASTRADO!');</script>";
+    }
+    else
+    {
+        $sql = "INSERT INTO endereco_entrega (end_rua,end_cidade,end_estado,end_pais,end_codigo_postal,fk_cli_id,end_complemento,end_bairro,end_numero)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_bind_param($stmt, "ssssssssi", $rua, $cidade, $estado, $pais, $codigopostal, $idclientes, $complemento, $bairro, $numero);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        echo "<script>window.alert('ENDEREÇO CADASTRADO COM SUCESSO!');</script>";
+        echo "<script>window.location.href='areacliente.php';</script>";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

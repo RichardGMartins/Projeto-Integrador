@@ -19,7 +19,6 @@ if ($idclientes <= 0){
 } else {
     //VERIFICA SE EXISTE UM CARRINHO JÁ ABERTO
     $sql = "SELECT COUNT(car_id) FROM carrinho INNER JOIN cliente ON fk_cli_id = cli_id WHERE cli_id = $idclientes AND car_finalizada = 'n'";
-    echo $sql;
     $retorno = mysqli_query($link,$sql);
     //SE CARRINHO NÃO EXISTE CRIA UM NOVO CARRINHO
 
@@ -31,7 +30,6 @@ if ($idclientes <= 0){
 
             //SE O CARRINHO NÃO EXISTE GERA UM NOVO CARRINHO E INSERE NA TABELA  ITENS DO CARRINHO
             $sql = "INSERT INTO carrinho(car_id,fk_cli_id, car_valorvenda,car_finalizada) VALUES ($numerocarrinho,$idclientes,$valor_venda,'n')";
-            echo $sql;
             mysqli_query($link,$sql);
 
             $sql2 = "INSERT INTO item_carrinho(fk_car_id,fk_prod_id,car_item_quantidade) VALUES ($numerocarrinho,$id,$quantidade)";

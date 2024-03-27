@@ -5,8 +5,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $id = $_POST['id'];
     $resposta = $_POST['resposta'];
 
-    $sql = "UPDATE depoimento SET depo_respondido = '$resposta' WHERE depo_id = $id";
-    mysqli_query($link,$sql);
+    $sql = "UPDATE depoimento SET depo_respondido = ? WHERE depo_id = ? ";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "si", $resposta,$id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
 
     echo("<script>window.alert('Depoimento alterado com sucesso !')</script>");

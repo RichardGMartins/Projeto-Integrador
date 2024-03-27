@@ -37,12 +37,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         $imagem = file_get_contents('C:\xampp\htdocs\projetosti26\Projeto Integrador\img\alert.jpg');
         $imagem_base64 = base64_encode($imagem);
     }
-    $sql = "SELECT COUNT(prod_id) FROM produtos WHERE prod_nome = '$nome' AND prod_ativo = 's'";
-    $retorno = mysqli_query($link, $sql);
-    while ($tbl = mysqli_fetch_array($retorno))
-    {
-        $cont = $tbl[0];
-    }
+    $sql = "SELECT COUNT(prod_id) FROM produtos WHERE prod_nome = ? AND prod_ativo = 's'";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $nome);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $cont);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
     #VERIFICAÇÃO SE USUARIO EXISTE, SE EXISTE = 1 SENÃO = 0
     if ($cont == 1)
     {
@@ -57,17 +59,20 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         }
         else
         {
-        $sql = "INSERT INTO produtos(prod_nome, prod_descricao, prod_quantidade,prod_categoria,prod_marca,prod_custo,prod_valor,prod_ativo,prod_img)
-         VALUES ('$nome','$descricao',$quantidade,'$categoria','$marca','$custo',$valor,'s','$imagem_base64')";
-         echo $sql; //para debugar e puxar o que esta passando para banco de dados
-        $retorno = mysqli_query($link, $sql);
-        echo "<script>window.alert('PRODUTO CADASTRADO COM SUCESSO');</script>";
-        echo "<script>window.location.href='cadastroprodutos.php';</script>";
+            $sql = "INSERT INTO produtos(prod_nome, prod_descricao, prod_quantidade,prod_categoria,prod_marca,prod_custo,prod_valor,prod_ativo,prod_img)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, 's', ?)";
+            $stmt = mysqli_prepare($link, $sql);
+            mysqli_stmt_bind_param($stmt, "ssiisdds", $nome, $descricao, $quantidade, $categoria, $marca, $custo, $valor, $imagem_base64);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
+            echo "<script>window.alert('PRODUTO CADASTRADO COM SUCESSO');</script>";
+            echo "<script>window.location.href='cadastroprodutos.php';</script>";
         }
     }
-  
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

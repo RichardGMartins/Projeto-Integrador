@@ -1,5 +1,5 @@
 <?php 
-include("cabecalholoja.php");
+include("cabecalhocliente.php");
 
 $idprod = $_GET['var1'];
 $id = $_GET['var2'];

@@ -8,17 +8,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $senha = $_POST['senha'];
 
     #BUSCAR O TEMPERO
-    $sql = "SELECT usu_tempero FROM usuarios WHERE usu_login = $login";
-    $retorno = mysqli_query($link,$sql);
-    while ($tbl = mysqli_fetch_array($retorno)){
-        $tempero = $tbl[0];
-    }
+    $sql = "SELECT usu_tempero FROM usuarios WHERE usu_login = ? ";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $login);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $tempero);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
     #CASO A SENHA TENHA SIDO MODIFICADA
     if($senha != $senha2){
         $senha = md5($senha.$tempero);
     }
-    $sql = "UPDATE usuarios SET usu_senha = '$senha',usu_login = '$login', usu_ativo = '$ativo' WHERE usu_id = $id";
-    mysqli_query($link,$sql);
+    $sql = "UPDATE usuarios SET usu_senha = ? ,usu_login =  ?, usu_ativo = ? WHERE usu_id = ?";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "sssi", $senha,$login,$ativo,$id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
     echo("<script>window.alert('Usuario alterado com sucesso !')</script>");
     echo("<script>window.location.href='listausuarios.php';</script>");

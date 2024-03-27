@@ -29,12 +29,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         echo ("<script>window.location.href='cadastrocliente.php';</script>"); 
     }
     else {
-        $sql = "SELECT COUNT(cli_id) FROM cliente WHERE cli_nome = '$nome' AND cli_senha = '$senha' AND cli_email = '$email'AND cli_ativo = 's'";
-        $retorno = mysqli_query($link, $sql);
-        while ($tbl = mysqli_fetch_array($retorno))
-        {
-            $cont = $tbl[0];
-        }
+        $sql = "SELECT COUNT(cli_id) FROM cliente WHERE cli_nome = ? AND cli_senha = ? AND cli_email = ? AND cli_ativo = 's'";
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_bind_param($stmt, "sss", $nome,$senha,$email);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $cont);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
         #VERIFICAÇÃO SE USUARIO EXISTE, SE EXISTE = 1 SENÃO = 0
         if ($cont == 1)
         {
@@ -46,15 +47,24 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             $senha = md5($senha. $tempero);
 
             $sql = "INSERT INTO cliente (cli_nome,cli_email,cli_telefone,cli_cpf,cli_ativo, cli_senha,cli_tempero,cli_genero,cli_datanascimento)
-            VALUES ('$nome', '$email','$telefone','$cpf', 's', '$senha', '$tempero','$genero','$datanascimento')";
-            mysqli_query($link, $sql);
+            VALUES (?, ?, ?, ?, 's', ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($link, $sql);
+            mysqli_stmt_bind_param($stmt, "ssssssss", $nome, $email, $telefone, $cpf, $senha, $tempero, $genero, $datanascimento);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
             echo "<script>window.alert('Bem Vindo! Ao Melhor Site de Compras de Roupas!');</script>";
             echo "<script>window.location.href='areacliente.php';</script>";
            
            
             $sql = "SELECT * FROM cliente WHERE cli_email = '$email' AND cli_senha = '$senha' AND cli_ativo='s'";
-            $retorno = mysqli_query($link,$sql);
-            while ($tbl = mysqli_fetch_array($retorno)){
+            $stmt = mysqli_prepare($link, $sql);
+            mysqli_stmt_bind_param($stmt, "ss", $email, $senha);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $tbl = mysqli_fetch_array($result);
+            mysqli_stmt_close($stmt);
+            if($tbl){
                 $_SESSION['idcliente'] = $tbl[0]; //tbl é a coluna dentro do banco de dados
                 $_SESSION['nomecliente'] = $tbl[1];
             } 

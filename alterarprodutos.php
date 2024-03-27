@@ -1,5 +1,6 @@
 <?php 
 include("cabecalho.php");
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
      $id = $_POST['id'];
      $nome = $_POST['nome'];
@@ -10,38 +11,40 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
      $custo = $_POST['custo'];
      $valor = $_POST['valor'];
      $ativo = $_POST['ativo'];
-     $imagem_base64 =$_POST['imagem'];
+     $imagem_base64 = $_POST['imagem'];
      $imagem_atual = $_POST['imagem_atual'];
 
-     if(isset ($_FILES['imagem']) && $_FILES['imagem']['error']===UPLOAD_ERR_OK){
+     if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
         $tipo = exif_imagetype($_FILES['imagem']['tmp_name']);
         if ($tipo !== false) {
-            //o arquivo é uma imagem
+            // O arquivo é uma imagem
             $imagem_temp = $_FILES['imagem']['tmp_name'];
             $imagem = file_get_contents($imagem_temp);
             $imagem_base64 = base64_encode($imagem);
         } else {
-            //o arquivo não é uma imagem
+            // O arquivo não é uma imagem
             $imagem = file_get_contents('C:\xampp\htdocs\projetosti26\Projeto Integrador\img\alert.jpg');
             $imagem_base64 = base64_encode($imagem);
         }
-    } 
-    if ($imagem_atual == $imagem_base64) {
-        $sql = "UPDATE produtos SET prod_nome = '$nome', prod_descricao = '$descricao', prod_quantidade = '$quantidade',prod_categoria = '$categoria',prod_marca ='$marca',prod_custo ='$custo', prod_valor = '$valor', prod_ativo = '$ativo' WHERE prod_id = $id";
-
-        mysqli_query($link, $sql);
-
-        echo ("<script>window.alert('Produto alterado com sucesso!');</script>");
-        echo ("<script>window.location.href='listaprodutos.php';</script>");
-        exit();
-    } else {
-        $sql = "UPDATE produtos SET prod_nome = '$nome', prod_descricao = '$descricao', prod_quantidade = '$quantidade',prod_categoria = '$categoria',prod_marca ='$marca',prod_custo ='$custo', prod_valor = '$valor', prod_ativo = '$ativo', prod_img = '$imagem_base64' WHERE prod_id = $id";
-        mysqli_query($link, $sql);
-
-        echo ("<script>window.alert('Produto alterado com sucesso!');</script>");
-        echo ("<script>window.location.href='listaprodutos.php';</script>");
-        exit();
     }
+
+    if ($imagem_atual == $imagem_base64) {
+        $sql = "UPDATE produtos SET prod_nome = ?, prod_descricao = ?, prod_quantidade = ?, prod_categoria = ?, prod_marca = ?, prod_custo = ?, prod_valor = ?, prod_ativo = ? WHERE prod_id = ?";
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_bind_param($stmt, "ssisssdsi", $nome, $descricao, $quantidade, $categoria, $marca, $custo, $valor, $ativo, $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    } else {
+        $sql = "UPDATE produtos SET prod_nome = ?, prod_descricao = ?, prod_quantidade = ?, prod_categoria = ?, prod_marca = ?, prod_custo = ?, prod_valor = ?, prod_ativo = ?, prod_img = ? WHERE prod_id = ?";
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_bind_param($stmt, "ssisssdssi", $nome, $descricao, $quantidade, $categoria, $marca, $custo, $valor, $ativo, $imagem_base64, $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+
+    echo ("<script>window.alert('Produto alterado com sucesso!');</script>");
+    echo ("<script>window.location.href='listaprodutos.php';</script>");
+    exit();
 }
     $id = $_GET['id'];
     $sql = "SELECT * FROM produtos WHERE prod_id =$id";

@@ -48,6 +48,7 @@ while ($tbl = mysqli_fetch_array($retorno)){
             <a href="alterarcliente.php"><button>ALTERAÇÃO DE CADASTRO</button></a>
             <a href="enderecocobranca.php"><button>ENDEREÇO DE COBRANÇA</button></a>
             <a href="endereco.php"><button>ENDEREÇO</button></a>
+            <a href="historicocompras.php"><button>HISTORICO DE COMPRAS</button></a>
     </div>
     </div>
     <footer>

@@ -1,5 +1,5 @@
 <?php 
-include("cabecalho.php");
+include("cabecalhocliente.php");
 
 $sql = "SELECT car_id,car_valorvenda, car_datavenda, car_total_item, cli_nome, fk_cli_id FROM carrinho INNER JOIN cliente ON fk_cli_id = cli_id WHERE car_finalizada = 's'"; 
 $return = mysqli_query($link,$sql);
@@ -14,17 +14,7 @@ $return = mysqli_query($link,$sql);
     <title>VENDAS</title>
 </head>
 <body>
-    <div class="background"> 
-                <form action="historicovendas.php" method="post">
-                <!-- Required é usado para o usuario tentar passar em branco o cadastro e impedir o mesmo -->
-                <input type="radio" name ="ativo" class="radio" value="s" required onclick="submit()" <?= $ativo == 's' ? "checked" : "" ?>> ATIVOS 
-                <br>
-                <input type="radio" name ="ativo" class="radio" value="n" required onclick="submit()" <?= $ativo == 'n' ? "checked" : "" ?>> INATIVOS 
-                <br>   
-                <input type="radio" name="ativo" class="radio" value="t" required onclick="submit()" <?= $ativo =='t' ? "checked" : "" ?>> TODOS 
-            </form>
-            </div>
-    <div class="container" id="center-container">
+    <div class="div-form6">
     <table border="1">
         <h3>HISTORICO DE VENDAS</h3>
         <th>Valor da Venda</th>
@@ -45,6 +35,5 @@ $return = mysqli_query($link,$sql);
         <?php } ?>
     </table>
     </div>
-    
 </body>
 </html>

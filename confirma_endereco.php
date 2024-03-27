@@ -44,27 +44,27 @@ while($tbl = mysqli_fetch_array($retorno)){
     <div class="div-alteraprod">
         <form action="endereco.php?id=<?=$id?>" method="post">
         <h2 id='h2-alterarprod'>Confirmação de Endereço de Entrega</h2><br>
-            <input type="hidden" name="id" value="<?= $id ?>">
+            <input type="hidden" name="id" value="<?= $id ?>" >
             <label>Rua</label></label><br>
-            <input type="text" name = "rua" value="<?=$rua?>"> <br>
+            <input type="text" name = "rua" value="<?=$rua?>" readonly> <br>
             <label>Numero</label></label><br>
-            <input type="number" name = "numero" value="<?=$numero?>"> <br>
+            <input type="number" name = "numero" value="<?=$numero?>" readonly> <br>
             <label>Bairro</label></label><br>
-            <input type="text" name = "bairro" value="<?=$bairro?>"> <br>
+            <input type="text" name = "bairro" value="<?=$bairro?>" readonly> <br>
             <label>Complemento</label> <br>
-            <input type="text" name ="complemento" value="<?=$complemento?>">
+            <input type="text" name ="complemento" value="<?=$complemento?>" readonly>
             <br>
             <label>Cidade</label> <br>
-            <input type="text" name ="cidade" value="<?=$cidade?>">
+            <input type="text" name ="cidade" value="<?=$cidade?>" readonly>
             <br>
             <label>Estado</label> <br>
-            <input type="text" name ="estado" value="<?=$estado?>">
+            <input type="text" name ="estado" value="<?=$estado?>" readonly>
             <br>
             <label>Pais</label> <br>
-            <input type="text" name ="pais" value="<?=$pais?>">
+            <input type="text" name ="pais" value="<?=$pais?>" readonly>
             <br>
             <label>Codigo Postal</label> <br>
-            <input type="text" name ="codigopostal" value="<?=$codigopostal?>">
+            <input type="text" name ="codigopostal" value="<?=$codigopostal?>" readonly>
             <br>
         </form>
         <a  id="click" href="finaliza_carrinho.php"><button id="btn4">Concluir Compra</button></a>

@@ -1,5 +1,6 @@
 <?php 
 include ('cabecalhocliente.php');
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $id = $_POST['id'];
     $email = $_POST['email'];
@@ -10,22 +11,29 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $datanascimento = $_POST['datanascimento'];
 
     #BUSCAR O TEMPERO
-    $sql = "SELECT cli_tempero FROM cliente WHERE cli_email = '$email'";
-    $retorno = mysqli_query($link,$sql);
-    while ($tbl = mysqli_fetch_array($retorno)){
-        $tempero = $tbl[0];
-    }
+    $sql = "SELECT cli_tempero FROM cliente WHERE cli_email = ?";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $tempero);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
     #CASO A SENHA TENHA SIDO MODIFICADA
     if($senha != $senha2){
         $senha = md5($senha.$tempero);
     }
-    $sql = "UPDATE cliente SET cli_nome = '$nome',cli_email = '$email',cli_telefone = '$telefone',cli_senha = '$senha',cli_genero = '$genero',cli_datanascimento ='$datanascimento' WHERE cli_id = $idclientes";
-    mysqli_query($link,$sql);
 
-    echo("<script>window.alert('Usuario alterado com sucesso !')</script>");
+    $sql = "UPDATE cliente SET cli_nome = ?, cli_email = ?, cli_telefone = ?, cli_senha = ?, cli_genero = ?, cli_datanascimento = ? WHERE cli_id = ?";
+    $stmt = mysqli_prepare($link, $sql);
+    mysqli_stmt_bind_param($stmt, "ssssssi", $nome, $email, $telefone, $senha, $genero, $datanascimento, $id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    echo("<script>window.alert('Usuário alterado com sucesso!')</script>");
     echo("<script>window.location.href='perfil.php';</script>");
     exit();
 }
+
 $sql = "SELECT * FROM cliente WHERE cli_id =$idclientes";
 $retorno = mysqli_query($link,$sql);
 

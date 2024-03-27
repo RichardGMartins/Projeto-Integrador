@@ -8,26 +8,28 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $login = $_POST['login'];
     $senha = $_POST['senha'];
 
-    #Trim é usado para tirar os espaços do começo e do fim do nome para armazenar sem spacebar
+    #Trim é usado para tirar os espaços do começo e do fim do nome para armazenar sem espaço
     $login = trim($login);
     #POSSANDO INSTRUÇÕES SQL PARA O BANCO
     #VALIDANDO SE USUARIO EXISTE
-    #preg_match é usado para o usuario colocar somente os caracteres a baixo sem o spacebar
+    #preg_match é usado para o usuário colocar somente os caracteres abaixo sem espaço
     if (!preg_match('/^[a-zA-Z0-9!@#$%^&*()-_+=]*$/', $senha)) {
         echo ("<script>window.alert('Por favor informe que contém caracteres especiais permitidos');</script>");
         echo ("<script>window.location.href='cadastrousuario.php';</script>"); 
     }
     else {
-        $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_login = '$login' AND usu_senha = '$senha' AND usu_status = 's'";
-        $retorno = mysqli_query($link, $sql);
-        while ($tbl = mysqli_fetch_array($retorno))
-        {
-            $cont = $tbl[0];
-        }
+        $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_login = ? AND usu_senha = ? AND usu_status = 's'";
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_bind_param($stmt, "ss", $login, $senha);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $cont);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+        
         #VERIFICAÇÃO SE USUARIO EXISTE, SE EXISTE = 1 SENÃO = 0
         if ($cont == 1)
         {
-            echo "<script>window.alert('USUARIO JÁ CADASTRADO!';</script>)";
+            echo "<script>window.alert('USUARIO JÁ CADASTRADO!');</script>";
         }
         else
         {
@@ -35,17 +37,19 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             $senha = md5($senha. $tempero);
 
             $sql = "INSERT INTO usuarios (usu_login, usu_senha,usu_status,usu_tempero)
-            VALUES ('$login', '$senha', 's', '$tempero')";
-            echo($sql);
-            //ALTER TABLE usuarios
-            // ADD usu_tempero VARCHAR(50);
-            mysqli_query($link, $sql);
+            VALUES (?, ?, 's', ?)";
+            $stmt = mysqli_prepare($link, $sql);
+            mysqli_stmt_bind_param($stmt, "sss", $login, $senha, $tempero);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
             echo "<script>window.alert('USUARIO CADASTRADO');</script>";
-            echo "<script>window.location.href='cadastrousuario.php';</script>";
+            echo "<script>window.location.href='muybella cadastro.html';</script>";
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
